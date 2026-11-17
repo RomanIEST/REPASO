@@ -1,0 +1,1601 @@
+##############################################################################
+ BANCO DE PREGUNTAS DE PRACTICA - EXAMEN GENERAL DE EGRESO (INGENIERIA EN TI)
+ 344 reactivos de opción múltiple (dificultad media-alta), con claves al final
+##############################################################################
+
+INSTRUCCIONES
+ - Cada reactivo tiene 4 opciones (A–D) y una sola respuesta correcta.
+ - Haz las pruebas de escritorio a mano y dibuja tablas/clusters/subredes antes de mirar la clave.
+ - Las claves están al FINAL del archivo, con una breve justificación.
+ - Los temas con peso de repetición intencional (SQL, subnetting, métricas de ML,
+   Git, OLAP, heurísticas de Nielsen) tienen varios reactivos con variantes.
+ - Pausa de 30–60 s cada 25–30 preguntas (como indica tu guía).
+
+DISTRIBUCION
+ Parte I  : Programación 52 | Bases de Datos 46 | Web y Móvil 34 | Ing. Software 23 | UX 6
+ Parte II : Redes 46 | IA/ML 46 | Ciberseguridad 17 | BI 17 | SIG 6 | Cloud 17 | QA 17 | Negocios/SO/Tech 17
+ TOTAL    : 344
+
+==============================================================================
+PARTE I - SECCION 1: PROGRAMACION Y ALGORITMOS (52 reactivos)
+==============================================================================
+
+PROG-01. ¿Qué imprime?
+    x = 0
+    for i in range(1, 6):
+        if i % 2 == 0:
+            continue
+        x += i
+    print(x)
+  A) 6   B) 9   C) 15   D) 12
+
+PROG-02. En Python, ¿cuál es el valor impreso?
+    n = 10; c = 0
+    while n > 0:
+        n //= 2
+        c += 1
+    print(c)
+  A) 3   B) 5   C) 2   D) 4
+
+PROG-03. Evaluación con corto circuito. ¿Qué ocurre?
+    a, b = 5, 0
+    if b != 0 and a / b > 1:
+        print("A")
+    elif a > 3 or a / b > 1:
+        print("B")
+    else:
+        print("C")
+  A) ZeroDivisionError   B) Imprime A   C) Imprime B   D) Imprime C
+
+PROG-04. ¿Qué imprime?
+    def f(n):
+        if n <= 1: return n
+        return f(n-1) + f(n-2)
+    print(f(7))
+  A) 13   B) 8   C) 21   D) 5
+
+PROG-05. ¿Qué imprime?
+    def g(n):
+        if n == 0: return 0
+        return n % 10 + g(n // 10)
+    print(g(4729))
+  A) 20   B) 22   C) 18   D) 24
+
+PROG-06. En Java:
+    class A { void show(){ System.out.println("A"); } }
+    class B extends A { void show(){ System.out.println("B"); } }
+    A obj = new B();
+    obj.show();
+  A) A   B) AB   C) Error de compilación   D) B
+
+PROG-07. En Java, los métodos estáticos se ocultan (no se sobrescriben):
+    class A { static String who(){ return "A"; } }
+    class B extends A { static String who(){ return "B"; } }
+    A x = new B();
+    System.out.println(x.who());
+  A) A   B) B   C) null   D) Error de compilación
+
+PROG-08. Resolución de métodos (MRO) en Python:
+    class A:
+        def hi(self): return "A"
+    class B(A):
+        def hi(self): return "B" + super().hi()
+    class C(A):
+        def hi(self): return "C" + super().hi()
+    class D(B, C):
+        def hi(self): return "D" + super().hi()
+    print(D().hi())
+  A) DBA   B) DCBA   C) DBCA   D) DA
+
+PROG-09. En C++:
+    class A { public: virtual void f(){cout<<"A";}  void g(){cout<<"A";} };
+    class B : public A { public: void f(){cout<<"B";}  void g(){cout<<"B";} };
+    A* p = new B();
+    p->f(); p->g();
+  A) BB   B) AA   C) BA   D) AB
+
+PROG-10. En Java, ¿cuál es el valor de r?
+    int a = 7, b = 2;
+    double r = a / b + (double) a / b;
+  A) 6.5   B) 6.0   C) 7.0   D) 5.5
+
+PROG-11. Argumento mutable por defecto en Python:
+    def add(x, l=[]):
+        l.append(x)
+        return l
+    add(1)
+    print(add(2))
+  A) [2]   B) [1]   C) []   D) [1, 2]
+
+PROG-12. ¿Qué imprime?
+    a = [1, 2, 3, 4, 5, 6]
+    print(a[1:5:2], a[::-2])
+  A) [2, 4] [6, 4, 2]   B) [2, 3, 4] [6, 4, 2]
+  C) [2, 4] [1, 3, 5]   D) [2, 4] [6, 5, 4]
+
+PROG-13. ¿Cuántas veces se ejecuta c += 1?
+    c = 0
+    for i in range(1, 5):
+        for j in range(i):
+            c += 1
+  A) 6   B) 10   C) 8   D) 16
+
+PROG-14. Un arreglo ordenado tiene 1,000,000 de elementos. ¿Cuántas comparaciones, como máximo y aproximadamente, hace la búsqueda binaria?
+  A) 10   B) 20   C) 1,000   D) 500,000
+
+PROG-15. ¿Cuál es la complejidad del siguiente fragmento?
+    for (i = 0; i < n; i++)
+        for (j = 1; j < n; j *= 2)
+            work();
+  A) O(n)   B) O(n²)   C) O(log n)   D) O(n log n)
+
+PROG-16. Pila (stack) vacía. Operaciones: push(1), push(2), push(3), pop(), push(4), pop(), pop(). ¿Cuál es el contenido final?
+  A) [1]   B) [1, 2]   C) [1, 2, 3]   D) [1, 4]
+
+PROG-17. Cola (queue) vacía. enqueue(A), enqueue(B), enqueue(C), dequeue(), enqueue(D), dequeue(). ¿Qué elemento está al frente?
+  A) A   B) D   C) C   D) B
+
+PROG-18. Bubble sort sobre [5, 1, 4, 2, 8]. ¿Cómo queda el arreglo después de la PRIMERA pasada completa?
+  A) [1, 5, 4, 2, 8]   B) [5, 1, 4, 2, 8]   C) [1, 2, 4, 5, 8]   D) [1, 4, 2, 5, 8]
+
+PROG-19. Selection sort sobre [64, 25, 12, 22, 11]. ¿Cómo queda tras DOS iteraciones del ciclo externo?
+  A) [11, 12, 25, 22, 64]   B) [11, 12, 22, 25, 64]
+  C) [11, 25, 12, 22, 64]   D) [12, 11, 25, 22, 64]
+
+PROG-20. Se requiere un ordenamiento ESTABLE con peor caso garantizado O(n log n). ¿Cuál elegir?
+  A) Quicksort   B) Bubble sort   C) Merge sort   D) Selection sort
+
+PROG-21. En Java:
+    String s = "hola";
+    s.concat(" mundo");
+    s.toUpperCase();
+    System.out.println(s);
+  A) HOLA MUNDO   B) hola mundo   C) HOLA   D) hola
+
+PROG-22. En Java:
+    String a = new String("x");
+    String b = new String("x");
+    System.out.println((a == b) + " " + a.equals(b));
+  A) true true   B) false true   C) true false   D) false false
+
+PROG-23. ¿Qué imprime?
+    x = 10
+    def f():
+        x = 5
+        def g():
+            nonlocal x
+            x += 1
+            return x
+        return g()
+    print(f(), x)
+  A) 6 6   B) 5 10   C) 6 10   D) Error
+
+PROG-24. ¿Qué imprime?
+    d = {k: v for k, v in zip("abc", range(3))}
+    print(d["c"] + len(d))
+  A) 5   B) 3   C) 4   D) 6
+
+PROG-25. En Java, ¿cuál es el valor de j?
+    int i = 5;
+    int j = i++ + ++i;
+  A) 11   B) 12   C) 10   D) 13
+
+PROG-26. ¿Qué imprime?
+    for i in range(2, 6):
+        if i == 7:
+            break
+    else:
+        print("fin")
+  A) No imprime nada   B) SyntaxError   C) "fin" 4 veces   D) "fin" una vez
+
+PROG-27. Torres de Hanói: número MÍNIMO de movimientos para 4 discos.
+  A) 8   B) 16   C) 15   D) 31
+
+PROG-28. ¿Cuál es el valor de h(5)?
+    def h(n):
+        if n == 0: return 1
+        return 2 * h(n - 1)
+  A) 32   B) 16   C) 10   D) 64
+
+PROG-29. El decimal 45 en binario es:
+  A) 101011   B) 101101   C) 110101   D) 101110
+
+PROG-30. En Java:
+    static int m() { try { return 1; } finally { System.out.println("F"); } }
+    ...
+    System.out.println(m());
+  A) Solo imprime 1   B) Imprime F y luego 1   C) Imprime 1 y luego F   D) Error de compilación
+
+PROG-31. ¿Qué imprime?
+    def gen():
+        for i in range(3):
+            yield i * i
+    print(sum(gen()))
+  A) 3   B) 14   C) 9   D) 5
+
+PROG-32. En Java, ¿cuál afirmación es VERDADERA?
+  A) Una clase puede heredar de varias clases abstractas.
+  B) Una clase puede implementar varias interfaces.
+  C) Una interfaz puede instanciarse con new directamente.
+  D) Una clase abstracta no puede tener constructores.
+
+PROG-33. ¿Cuál es el principal beneficio de declarar atributos privados con getters/setters?
+  A) Que el programa se ejecute más rápido.
+  B) Que los atributos puedan heredarse sin restricción.
+  C) Controlar y validar el acceso al estado interno del objeto (encapsulamiento).
+  D) Evitar el uso de constructores.
+
+PROG-34. En una tabla hash con encadenamiento, si TODAS las claves colisionan en el mismo bucket, la búsqueda es:
+  A) O(1)   B) O(log n)   C) O(n log n)   D) O(n)
+
+PROG-35. ¿Qué operación es más eficiente en una lista enlazada simple que en un arreglo?
+  A) Insertar un elemento al inicio
+  B) Acceso por índice
+  C) Búsqueda binaria
+  D) Obtener el elemento central
+
+PROG-36. Un BST se construye insertando: 50, 30, 70, 20, 40, 60, 80. ¿Cuál es el recorrido PREORDEN?
+  A) 20 30 40 50 60 70 80   B) 50 30 20 40 70 60 80
+  C) 20 40 30 60 80 70 50   D) 50 70 30 20 40 60 80
+
+PROG-37. Para el mismo BST de PROG-36, el recorrido POSTORDEN es:
+  A) 50 30 20 40 70 60 80   B) 20 30 40 50 60 70 80
+  C) 20 40 30 60 80 70 50   D) 20 40 30 80 60 70 50
+
+PROG-38. Grafo no dirigido con aristas: A-B, A-C, B-D, C-D, D-E. Recorrido BFS desde A (vecinos en orden alfabético):
+  A) A B D C E   B) A C B E D   C) A D B C E   D) A B C D E
+
+PROG-39. Mismo grafo de PROG-38. Recorrido DFS desde A (vecinos en orden alfabético):
+  A) A B C D E   B) A C D B E   C) A B D C E   D) A B D E C
+
+PROG-40. Grafo con pesos: A-B=4, A-C=1, C-B=2, B-D=1, C-D=5. Distancia mínima de A a D (Dijkstra):
+  A) 4   B) 5   C) 6   D) 3
+
+PROG-41. Cambio de monedas con denominaciones {1, 3, 4} y monto 6. ¿Qué afirmación es correcta?
+  A) El algoritmo voraz da 2 monedas (3+3).
+  B) El voraz da 3 monedas (4+1+1) aunque el óptimo es 2: voraz no siempre es óptimo.
+  C) El voraz da 3 monedas y es óptimo.
+  D) El voraz da 4 monedas.
+
+PROG-42. ¿Qué imprime?
+    class C:
+        n = 0
+        def __init__(self): C.n += 1
+    a = C(); b = C(); c = C()
+    print(C.n, a.n)
+  A) 1 1   B) 3 1   C) 3 3   D) 0 3
+
+PROG-43. En Java, ¿qué imprime p(5L)?
+    static void p(int x)    { System.out.print("int"); }
+    static void p(double x) { System.out.print("double"); }
+    static void p(Object x) { System.out.print("obj"); }
+  A) obj   B) int   C) Error de compilación   D) double
+
+PROG-44. ¿Qué imprime?
+    print(bool([]), bool("0"), bool(0.0), bool([0]))
+  A) False False False True   B) False True False True
+  C) True True False True     D) False True True True
+
+PROG-45. ¿Qué imprime?
+    print(7 // 2, -7 // 2, 7 % -3)
+  A) 3 -3 1   B) 3 -4 1   C) 3 -3 -2   D) 3 -4 -2
+
+PROG-46. En C++:
+    int a = 10; int *p = &a; *p += 5;
+    int &r = a; r *= 2;
+    cout << a;
+  A) 30   B) 15   C) 20   D) 25
+
+PROG-47. En C++:
+    int v[] = {10, 20, 30, 40};
+    int *p = v + 1;
+    cout << *(p + 2) << p[-1];
+  A) 3010   B) 4010   C) 2010   D) 4020
+
+PROG-48. La recurrencia T(n) = 2T(n/2) + n corresponde a una complejidad de:
+  A) O(n)   B) O(n²)   C) O(n log n)   D) O(log n)
+
+PROG-49. En Java, orden de salida:
+    class A { A(){ System.out.print("A"); } }
+    class B extends A { B(){ System.out.print("B"); } }
+    class C extends B { C(){ System.out.print("C"); } }
+    new C();
+  A) ABC   B) CBA   C) C   D) Error
+
+PROG-50. ¿Qué imprime?
+    try:
+        x = int("a")
+    except ValueError:
+        print("1")
+    else:
+        print("2")
+    finally:
+        print("3")
+  A) 1, 2 y 3   B) 2 y 3   C) 1 y 3   D) Solo 1
+
+PROG-51. ¿Qué imprime?
+    a, b = 48, 18
+    while b:
+        a, b = b, a % b
+    print(a)
+  A) 3   B) 12   C) 18   D) 6
+
+PROG-52. ¿Qué devuelve?
+    list(map(lambda x: x * x, filter(lambda x: x % 2, range(1, 8))))
+  A) [1, 4, 9, 16]   B) [1, 9, 25, 49]   C) [1, 3, 5, 7]   D) [4, 16, 36]
+
+==============================================================================
+PARTE I - SECCION 2: BASES DE DATOS (46 reactivos: 26 SQL + 20 MongoDB)
+==============================================================================
+
+--- ESQUEMA PARA LAS PREGUNTAS SQL (BD-01 a BD-26) ---
+Tabla empleados (id, nombre, depto_id, salario)
+  1, Ana,    1,    5000
+  2, Luis,   1,    4000
+  3, Marta,  2,    6000
+  4, Pedro,  2,    3000
+  5, Sofía,  NULL, 4500
+  6, Juan,   3,    3500
+
+Tabla departamentos (id, nombre)
+  1, Ventas
+  2, TI
+  3, RH
+  4, Legal
+
+BD-01. ¿Cuántas filas devuelve?
+    SELECT * FROM empleados e INNER JOIN departamentos d ON e.depto_id = d.id;
+  A) 6   B) 5   C) 4   D) 3
+
+BD-02. SELECT e.nombre, d.nombre FROM empleados e LEFT JOIN departamentos d ON e.depto_id = d.id;
+¿Cuántas filas devuelve y qué valor tiene d.nombre para Sofía?
+  A) 5 filas; Sofía no aparece   B) 6 filas; NULL   C) 6 filas; 'Legal'   D) 7 filas; NULL
+
+BD-03. ¿Qué devuelve?
+    SELECT d.nombre FROM departamentos d
+    LEFT JOIN empleados e ON e.depto_id = d.id
+    WHERE e.id IS NULL;
+  A) RH   B) Ventas   C) Ninguna fila   D) Legal
+
+BD-04. ¿Qué departamentos devuelve?
+    SELECT d.nombre FROM empleados e INNER JOIN departamentos d ON e.depto_id = d.id
+    GROUP BY d.nombre HAVING AVG(e.salario) > 4000;
+  A) Ventas y TI   B) Solo TI   C) Ventas, TI y RH   D) Solo RH
+
+BD-05. ¿Qué devuelve?
+    SELECT d.nombre FROM empleados e INNER JOIN departamentos d ON e.depto_id = d.id
+    GROUP BY d.nombre HAVING COUNT(*) = 1;
+  A) RH y Legal   B) Legal   C) RH   D) Ventas
+
+BD-06. ¿Cuál es el resultado?
+    SELECT SUM(salario) FROM empleados WHERE depto_id <> 1;
+  A) 17000   B) 12500   C) 21500   D) NULL
+
+BD-07. ¿Qué devuelve?
+    SELECT COUNT(*), COUNT(depto_id), COUNT(DISTINCT depto_id) FROM empleados;
+  A) 6, 5, 3   B) 6, 6, 3   C) 5, 5, 3   D) 6, 5, 4
+
+BD-08. ¿Cuántas filas devuelve?
+    SELECT nombre FROM empleados WHERE salario > (SELECT AVG(salario) FROM empleados);
+  A) 2   B) 3   C) 4   D) 5
+
+BD-09. ¿Qué devuelve?
+    SELECT nombre FROM empleados ORDER BY salario DESC LIMIT 2 OFFSET 1;
+  A) Marta, Ana   B) Ana, Sofía   C) Sofía, Luis   D) Marta, Sofía
+
+BD-10. La tabla X tiene los valores (1, 2, 2) y la tabla Y tiene (2, 3). ¿Cuántas filas devuelven X UNION Y y X UNION ALL Y, respectivamente?
+  A) 3 y 5   B) 4 y 5   C) 3 y 3   D) 5 y 5
+
+BD-11. ¿Cuál es el orden LÓGICO de evaluación de una consulta SQL?
+  A) SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY
+  B) FROM → SELECT → WHERE → GROUP BY → ORDER BY → HAVING
+  C) FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY
+  D) WHERE → FROM → HAVING → GROUP BY → SELECT → ORDER BY
+
+BD-12. ¿Qué devuelve?
+    SELECT * FROM departamentos WHERE id NOT IN (SELECT depto_id FROM empleados);
+  A) Legal   B) Legal y RH   C) Ninguna fila   D) Error de sintaxis
+
+BD-13. ¿Qué devuelve?
+    SELECT * FROM departamentos d
+    WHERE NOT EXISTS (SELECT 1 FROM empleados e WHERE e.depto_id = d.id);
+  A) Ninguna fila   B) RH   C) Legal   D) Legal y RH
+
+BD-14. ¿Cuántos empleados caen en la categoría 'B'?
+    SELECT CASE WHEN salario >= 5000 THEN 'A'
+                WHEN salario >= 4000 THEN 'B'
+                ELSE 'C' END AS cat, COUNT(*)
+    FROM empleados GROUP BY cat;
+  A) 1   B) 3   C) 2   D) 4
+
+BD-15. ¿Cuántas filas devuelve un FULL OUTER JOIN entre empleados y departamentos por depto_id = id?
+  A) 6   B) 7   C) 5   D) 8
+
+BD-16. Tabla Pedido(id_pedido PK, cliente, ciudad_cliente, producto, precio). La ciudad depende del cliente, no del pedido. ¿Qué forma normal se viola?
+  A) 1FN   B) 2FN   C) 3FN   D) Ninguna
+
+BD-17. Con la FK empleados.depto_id → departamentos.id definida con ON DELETE CASCADE, ¿cuántos registros de empleados se eliminan al ejecutar DELETE FROM departamentos WHERE id = 1?
+  A) 2   B) 0   C) 1   D) 6
+
+BD-18. T1 modifica un saldo sin hacer COMMIT, T2 lo lee y después T1 hace ROLLBACK. ¿Qué anomalía ocurrió y qué nivel de aislamiento mínimo la evita?
+  A) Lectura no repetible; READ UNCOMMITTED
+  B) Lectura sucia; READ COMMITTED
+  C) Fantasma; SERIALIZABLE
+  D) Lectura sucia; READ UNCOMMITTED
+
+BD-19. Existe un índice B-tree sobre empleados(nombre). ¿Qué consulta puede aprovecharlo eficientemente?
+  A) WHERE nombre LIKE '%an'
+  B) WHERE nombre LIKE '%an%'
+  C) WHERE nombre LIKE 'An%'
+  D) WHERE UPPER(nombre) = 'ANA'
+
+BD-20. ¿Cuántas filas tienen rn = 1?
+    SELECT * FROM (
+      SELECT nombre, ROW_NUMBER() OVER (PARTITION BY depto_id ORDER BY salario DESC) rn
+      FROM empleados) t WHERE rn = 1;
+  A) 3   B) 4   C) 5   D) 6
+
+BD-21. Estado final de salarios tras la transacción:
+    BEGIN;
+    UPDATE empleados SET salario = salario + 1000 WHERE id = 1;
+    SAVEPOINT s1;
+    UPDATE empleados SET salario = salario + 1000 WHERE id = 2;
+    ROLLBACK TO s1;
+    COMMIT;
+  A) Ana 5000, Luis 4000   B) Ana 6000, Luis 5000
+  C) Ana 5000, Luis 5000   D) Ana 6000, Luis 4000
+
+BD-22. En modo estándar (ONLY_FULL_GROUP_BY), ¿qué ocurre?
+    SELECT depto_id, nombre, COUNT(*) FROM empleados GROUP BY depto_id;
+  A) Error: 'nombre' no está en GROUP BY ni en una función de agregación
+  B) Devuelve 4 filas con el primer nombre de cada grupo
+  C) Devuelve 6 filas
+  D) Devuelve 1 fila
+
+BD-23. ¿Cuántas filas devuelve?
+    SELECT nombre FROM empleados WHERE nombre LIKE '_a%';
+  A) 2   B) 1   C) 3   D) 0
+
+BD-24. ¿Qué devuelve?
+    SELECT d.nombre, COUNT(e.id)
+    FROM departamentos d
+    LEFT JOIN empleados e ON e.depto_id = d.id AND e.salario > 4000
+    GROUP BY d.nombre;
+  A) Ventas 2, TI 2, RH 1, Legal 0
+  B) Ventas 1, TI 1 (solo dos filas)
+  C) Ventas 1, TI 1, RH 0 (sin Legal)
+  D) Ventas 1, TI 1, RH 0, Legal 0
+
+BD-25. Se necesita vaciar una tabla de 10 millones de filas rápidamente, conservando su estructura. Lo más adecuado es:
+  A) TRUNCATE TABLE   B) DROP TABLE   C) DELETE FROM sin WHERE   D) ALTER TABLE
+
+BD-26. ¿Cuántas filas devuelve?
+    SELECT nombre FROM empleados e
+    WHERE salario > (SELECT AVG(salario) FROM empleados WHERE depto_id = e.depto_id);
+  A) 2   B) 3   C) 4   D) 1
+
+--- COLECCION PARA LAS PREGUNTAS MONGODB (MG-01 a MG-20) ---
+Colección "pedidos":
+ {_id:1, cliente:"A", estado:"pagado",    total:100, items:[{sku:"x",qty:2},{sku:"y",qty:1}], dir:{ciudad:"MTY",  cp:64000}}
+ {_id:2, cliente:"B", estado:"pagado",    total:250, items:[{sku:"x",qty:1}],                  dir:{ciudad:"CDMX", cp:1000}}
+ {_id:3, cliente:"A", estado:"cancelado", total:80,  items:[{sku:"z",qty:5}],                  dir:{ciudad:"MTY",  cp:64010}}
+ {_id:4, cliente:"C", estado:"pagado",    total:150, items:[],                                 dir:{ciudad:"CDMX", cp:3100}}
+ {_id:5, cliente:"B", estado:"pagado",    total:50,  items:[{sku:"y",qty:3}],                  dir:{ciudad:"MTY",  cp:64020}}
+
+MG-01. ¿Cuántos documentos devuelve?
+    db.pedidos.find({ estado: "pagado", total: { $gte: 100 } })
+  A) 3   B) 2   C) 4   D) 5
+
+MG-02. ¿Cuántos documentos devuelve?
+    db.pedidos.find({ "dir.ciudad": "MTY" })
+  A) 2   B) 4   C) 3   D) 5
+
+MG-03. ¿Cuál es el PRIMER documento del resultado?
+    db.pedidos.aggregate([
+      { $match: { estado: "pagado" } },
+      { $group: { _id: "$cliente", t: { $sum: "$total" } } },
+      { $sort: { t: -1 } }
+    ])
+  A) {_id:"A", t:100}   B) {_id:"B", t:300}   C) {_id:"C", t:150}   D) {_id:"B", t:250}
+
+MG-04. ¿Cuántos documentos salen de la etapa $unwind?
+    db.pedidos.aggregate([ { $unwind: "$items" } ])
+  A) 6   B) 4   C) 5   D) 3
+
+MG-05. ¿Cuál es el valor de "total" para _id:"y"?
+    db.pedidos.aggregate([
+      { $unwind: "$items" },
+      { $group: { _id: "$items.sku", total: { $sum: "$items.qty" } } }
+    ])
+  A) 4   B) 3   C) 1   D) 5
+
+MG-06. Para el pedido _id:2, ¿qué documento produce la etapa?
+    { $project: { _id: 0, cliente: 1, ciudad: "$dir.ciudad" } }
+  A) {_id:2, cliente:"B", ciudad:"CDMX"}
+  B) {cliente:"B", ciudad:"CDMX"}
+  C) {cliente:"B", dir:{ciudad:"CDMX"}}
+  D) {ciudad:"CDMX"}
+
+MG-07. Para el pedido _id:4, ¿cuánto vale totalConIva?
+    { $addFields: { totalConIva: { $multiply: ["$total", 1.16] } } }
+  A) 150   B) 166   C) 174   D) 24
+
+MG-08. ¿Qué valor devuelve?
+    db.pedidos.aggregate([ { $group: { _id: null, prom: { $avg: "$total" } } } ])
+  A) 100   B) 126   C) 158   D) 150
+
+MG-09. ¿Qué resultado produce?
+    db.pedidos.aggregate([
+      { $match: { estado: "pagado" } },
+      { $group: { _id: "$dir.ciudad", n: { $sum: 1 } } }
+    ])
+  A) MTY:3, CDMX:2   B) MTY:2, CDMX:2   C) MTY:2, CDMX:3   D) MTY:3, CDMX:3
+
+MG-10. ¿Qué _id devuelve, en orden?
+    db.pedidos.aggregate([ { $sort: { total: -1 } }, { $limit: 2 }, { $project: { _id: 1 } } ])
+  A) 2 y 4   B) 2 y 1   C) 4 y 1   D) 1 y 2
+
+MG-11. ¿Cuántos documentos devuelve?
+    db.pedidos.find({ "items.sku": "y" })
+  A) 1   B) 2   C) 3   D) 0
+
+MG-12. Se ejecutan dos consultas:
+    Q1: find({ "items.sku": "y", "items.qty": { $gte: 2 } })
+    Q2: find({ items: { $elemMatch: { sku: "y", qty: { $gte: 2 } } } })
+¿Cuántos documentos devuelve cada una?
+  A) Q1=1, Q2=1   B) Q1=2, Q2=1   C) Q1=2, Q2=2   D) Q1=1, Q2=2
+
+MG-13. ¿Cuántos documentos devuelve?
+    db.pedidos.find({ cliente: { $in: ["A", "C"] } })
+  A) 2   B) 4   C) 3   D) 5
+
+MG-14. ¿Cuántos documentos modifica (nModified)?
+    db.pedidos.updateMany({ estado: "cancelado" }, { $set: { total: 0 } })
+  A) 1   B) 2   C) 3   D) 5
+
+MG-15. ¿Qué _id devuelve?
+    db.pedidos.find({ items: { $size: 0 } }, { _id: 1 })
+  A) 3   B) 1   C) 4   D) 5
+
+MG-16. Para el cliente "A", ¿qué contiene "ids"?
+    { $group: { _id: "$cliente", ids: { $push: "$_id" } } }
+  A) [1]   B) [1, 2, 3]   C) [3]   D) [1, 3]
+
+MG-17. ¿Cuántos documentos devuelve?
+    db.pedidos.find({ $or: [ { estado: "cancelado" }, { total: { $lt: 60 } } ] })
+  A) 2   B) 1   C) 3   D) 5
+
+MG-18. ¿Qué devuelve?
+    db.pedidos.aggregate([ { $match: { "dir.cp": { $gt: 64000 } } }, { $count: "n" } ])
+  A) {n:3}   B) {n:2}   C) {n:5}   D) {n:1}
+
+MG-19. ¿Qué devuelve?
+    db.pedidos.aggregate([ { $group: { _id: "$estado", c: { $sum: 1 } } } ])
+  A) pagado:3, cancelado:2   B) pagado:4, cancelado:1   C) pagado:5   D) pagado:2, cancelado:3
+
+MG-20. Un pedido contiene pocos items que siempre se consultan junto con el pedido y no crecen sin límite. ¿Cuál es el mejor modelado en MongoDB?
+  A) Embeber los items como subdocumentos dentro del pedido.
+  B) Una colección aparte y referencias con $lookup siempre.
+  C) Un documento por cada campo del item.
+  D) Guardar los items como cadena de texto JSON.
+
+==============================================================================
+PARTE I - SECCION 3: DESARROLLO WEB Y MOVIL (34 reactivos)
+==============================================================================
+
+WEB-01. html { font-size: 16px } .a { font-size: 2em } y dentro de .a un elemento .b { font-size: 1.5em }. ¿Tamaño computado de .b?
+  A) 24px   B) 32px   C) 48px   D) 3px
+
+WEB-02. html { font-size: 10px } y .x { font-size: 2rem; padding: 1.5em; }. ¿Cuánto vale el padding de .x?
+  A) 15px   B) 30px   C) 20px   D) 24px
+
+WEB-03. Con box-sizing: content-box; width: 200px; padding: 20px; border: 5px solid. ¿Ancho total visible (contenido + padding + borde, sin margen)?
+  A) 200px   B) 225px   C) 250px   D) 270px
+
+WEB-04. Con box-sizing: border-box; width: 200px; padding: 20px; border: 5px solid. ¿Ancho del área de contenido?
+  A) 150px   B) 200px   C) 160px   D) 250px
+
+WEB-05. Dos párrafos hermanos en bloque: el primero con margin-bottom: 30px y el segundo con margin-top: 20px. ¿Separación real entre ellos?
+  A) 50px   B) 20px   C) 25px   D) 30px
+
+WEB-06. Contenedor flex de 500px con justify-content: space-between y 3 hijos de 100px de ancho. ¿Espacio entre cada par de hijos?
+  A) 50px   B) 66px   C) 100px   D) 200px
+
+WEB-07. Contenedor flex de 600px. A: width 100px, flex-grow 1. B: width 100px, flex-grow 2. C: width 100px, flex-grow 0. ¿Anchos finales de A, B y C?
+  A) 200, 300, 100   B) 300, 300, 0   C) 200, 200, 200   D) 150, 300, 150
+
+WEB-08. Contenedor con display:flex; flex-direction: column; justify-content: center; align-items: flex-end. Los hijos quedan:
+  A) Centrados verticalmente y alineados a la derecha
+  B) Centrados horizontalmente y alineados abajo
+  C) Alineados arriba a la derecha
+  D) Centrados en ambos ejes
+
+WEB-09. Un <a> dentro de <nav id="nav" class="menu"> cumple estas reglas. ¿Cuál gana?
+    nav ul li a        { color: red; }
+    #nav a             { color: blue; }
+    .menu .item a      { color: green; }
+  A) La de color red   B) La de color blue   C) La de color green   D) Empate; gana la última
+
+WEB-10. Un elemento tiene style="color:red" inline, y la hoja de estilos define #id { color: blue !important; }. ¿Color final?
+  A) Rojo   B) Depende del orden   C) Azul   D) Error
+
+WEB-11. Un hijo con position:absolute está en un padre sin position, dentro de un abuelo con position:relative. ¿Respecto a qué se posiciona?
+  A) El abuelo   B) El padre   C) El viewport siempre   D) Sí mismo
+
+WEB-12. ¿Cuál propiedad CSS se hereda por defecto?
+  A) margin   B) border   C) padding   D) color
+
+WEB-13. grid-template-columns: repeat(3, 1fr) con 7 elementos hijos. ¿Cuántas filas se generan?
+  A) 2   B) 4   C) 7   D) 3
+
+WEB-14. Dado:
+    <ul><li>A</li><li class="x">B<ul><li class="x">C</li></ul></li></ul>
+¿Cuántos elementos devuelve document.querySelectorAll("li.x li")?
+  A) 0   B) 1   C) 2   D) 3
+
+WEB-15. Un <div> padre registra onclick que imprime "P" y su <button> hijo imprime "C", pero el handler del botón llama e.stopPropagation(). Al hacer clic en el botón:
+  A) P y luego C   B) Solo P   C) C y luego P   D) Solo C
+
+WEB-16. ¿Qué imprime?
+    console.log(1 + "2", "3" - 1, "5" * "2");
+  A) "12" 2 10   B) 3 2 10   C) "12" "31" 10   D) "12" 2 "52"
+
+WEB-17. ¿Qué imprime?
+    for (var i = 0; i < 3; i++) { setTimeout(() => console.log(i), 0); }
+  A) 0 1 2   B) 0 0 0   C) undefined ×3   D) 3 3 3
+
+WEB-18. Orden de salida:
+    console.log(1);
+    setTimeout(() => console.log(2), 0);
+    Promise.resolve().then(() => console.log(3));
+    console.log(4);
+  A) 1 2 3 4   B) 1 4 2 3   C) 1 4 3 2   D) 1 3 4 2
+
+WEB-19. Un usuario autenticado intenta borrar un recurso para el que no tiene permisos. La API REST debe responder:
+  A) 403 Forbidden   B) 401 Unauthorized   C) 404 Not Found   D) 400 Bad Request
+
+WEB-20. ¿Cuál método HTTP NO es idempotente?
+  A) GET   B) PUT   C) DELETE   D) POST
+
+WEB-21. Para una estrategia mobile-first, las media queries se escriben principalmente con:
+  A) @media (min-width: 768px)   B) @media (max-width: 768px)
+  C) @media print                D) @media (orientation: portrait)
+
+WEB-22. El bloque de enlaces principales de navegación de un sitio debe marcarse semánticamente con:
+  A) <div id="menu">   B) <nav>   C) <section>   D) <aside>
+
+WEB-23. Un dato debe desaparecer al cerrar la pestaña del navegador. ¿Dónde guardarlo?
+  A) localStorage   B) Cookie sin expiración   C) IndexedDB   D) sessionStorage
+
+WEB-24. Un frontend en https://a.com consume https://api.b.com y el navegador bloquea la respuesta. ¿Qué corrección aplica en el servidor?
+  A) Cambiar el método GET por POST
+  B) Cambiar a localStorage
+  C) Desactivar HTTPS
+  D) Enviar la cabecera Access-Control-Allow-Origin adecuada
+
+WEB-25. En React, count vale 0 y se ejecuta tres veces seguidas en el mismo handler: setCount(count + 1). ¿Cuánto vale count tras el render?
+  A) 3   B) 0   C) Error   D) 1
+
+WEB-26. Mismo caso, pero con setCount(c => c + 1) tres veces. Resultado:
+  A) 1   B) 2   C) 3   D) 0
+
+WEB-27. En React, useEffect(() => { ... }, []) se ejecuta:
+  A) Una vez, después del primer render   B) En cada render
+  C) Solo al desmontar                    D) Nunca
+
+WEB-28. En Jetpack Compose, ¿qué API conserva un estado tras una rotación de pantalla (cambio de configuración)?
+  A) remember   B) rememberSaveable   C) val simple   D) LaunchedEffect
+
+WEB-29. En Compose, para mostrar una lista de 10,000 elementos eficientemente se usa:
+  A) LazyColumn   B) Column con forEach   C) Row   D) Box
+
+WEB-30. En Compose, dentro de un Box se declaran Text("A") y luego Text("B") sin modificadores. ¿Qué ocurre?
+  A) Se colocan en fila   B) Se superponen y B se dibuja encima de A
+  C) Se superponen y A queda encima   D) Lanza error
+
+WEB-31. En SwiftUI, una vista hija debe MODIFICAR un valor @State del padre. ¿Qué wrapper usa el hijo?
+  A) @State propio   B) @Environment   C) @Binding   D) let
+
+WEB-32. En SwiftUI: Text("Hi").padding().background(Color.red). El fondo rojo cubre:
+  A) Solo el texto   B) El texto y el padding   C) Nada   D) Solo el padding
+
+WEB-33. VStack { Text("A"); Spacer(); Text("B") } ocupando toda la pantalla. Resultado:
+  A) Ambos arriba   B) A abajo, B arriba   C) Ambos centrados   D) A arriba, B abajo
+
+WEB-34. En Android, el usuario presiona el botón Home con la Activity visible. Callbacks en orden:
+  A) onDestroy   B) onStop y luego onPause   C) onRestart   D) onPause y luego onStop
+
+==============================================================================
+PARTE I - SECCION 4: INGENIERIA DE SOFTWARE (23 reactivos)
+==============================================================================
+
+ING-01. Modificas a.txt, ejecutas git add a.txt, vuelves a modificar a.txt y ejecutas git commit -m "x". ¿Qué se confirma?
+  A) Ambas modificaciones
+  B) Solo la versión que estaba en staging al hacer add; la segunda queda sin stage
+  C) Nada; git commit falla
+  D) Solo la segunda modificación
+
+ING-02. Quieres deshacer el último commit pero conservar los cambios listos en el área de staging:
+  A) git reset --hard HEAD~1   B) git reset --mixed HEAD~1   C) git reset --soft HEAD~1   D) git revert HEAD
+
+ING-03. Resolviste manualmente los marcadores <<<<<<<, ======= y >>>>>>> de un merge. Pasos siguientes:
+  A) git add <archivo> y git commit
+  B) git push --force
+  C) git reset --hard
+  D) git stash drop
+
+ING-04. Tienes cambios sin commit en feature y necesitas cambiar a main para un arreglo urgente sin perder el trabajo:
+  A) git reset --hard   B) git stash   C) git revert   D) git clean -f
+
+ING-05. ¿Cuál es el principal riesgo de git rebase sobre una rama ya publicada y compartida?
+  A) Pierde archivos sin seguimiento
+  B) Reescribe el historial, provocando divergencias a otros colaboradores
+  C) Borra la rama remota
+  D) Impide cualquier push
+
+ING-06. Un commit defectuoso ya está en main (público). La forma segura de deshacerlo sin reescribir historia es:
+  A) git reset --hard HEAD~1 y push -f   B) git rebase -i   C) git commit --amend   D) git revert <hash>
+
+ING-07. Necesitas aplicar en main un único commit específico hecho en otra rama:
+  A) git merge   B) git cherry-pick   C) git rebase   D) git fetch
+
+ING-08. git pull equivale a:
+  A) git clone + git checkout   B) git push + git fetch   C) git fetch + git merge   D) git add + git commit
+
+ING-09. Agregaste un archivo al staging por error. Para sacarlo del staging sin perder los cambios:
+  A) git rm archivo   B) git restore --staged archivo   C) git checkout --force   D) git commit --amend
+
+ING-10. Agregaste config.env al .gitignore pero Git sigue mostrándolo como modificado (ya estaba versionado). Solución:
+  A) git rm --cached config.env   B) Reiniciar el IDE   C) git stash   D) git clean -f
+
+ING-11. En un equipo "Scrum", el líder técnico asigna tareas a cada desarrollador sin consultar al equipo. ¿Qué característica de Scrum se contradice?
+  A) Transparencia   B) Autoorganización del equipo de desarrollo   C) Timebox   D) Inspección
+
+ING-12. Al final del sprint, el equipo analiza cómo trabajó y define mejoras de proceso. Es la:
+  A) Sprint Planning   B) Daily Scrum   C) Sprint Review   D) Sprint Retrospective
+
+ING-13. Velocidad en los últimos 3 sprints: 20, 25 y 30 puntos. El backlog restante es de 100 puntos. ¿Cuántos sprints se estiman?
+  A) 3   B) 4   C) 5   D) 6
+
+ING-14. En Kanban, el propósito principal del límite WIP es:
+  A) Asignar responsables   B) Medir story points
+  C) Detectar cuellos de botella y mejorar el flujo   D) Aumentar tareas en paralelo
+
+ING-15. "El usuario recibe un correo de confirmación inmediatamente después de registrarse" es un ejemplo de:
+  A) Épica   B) Definition of Done   C) Tarea técnica   D) Criterio de aceptación
+
+ING-16. En un burndown chart, la línea real queda por encima de la línea ideal a mitad del sprint. Significa:
+  A) Equipo adelantado   B) Sprint terminado   C) Hay más trabajo restante del planeado (retraso)   D) Velocidad infinita
+
+ING-17. En un diagrama de casos de uso: "Registrar compra" SIEMPRE requiere "Validar tarjeta"; "Aplicar cupón" es opcional. Relaciones correctas:
+  A) Validar tarjeta: «include»; Aplicar cupón: «extend»
+  B) Ambos «include»
+  C) Validar tarjeta: «extend»; Aplicar cupón: «include»
+  D) Ambos «extend»
+
+ING-18. Una Casa contiene Habitaciones que no existen sin ella. En UML se modela como:
+  A) Asociación simple   B) Agregación (rombo vacío)   C) Composición (rombo relleno)   D) Herencia
+
+ING-19. "Un cliente realiza cero o muchos pedidos; cada pedido pertenece a exactamente un cliente". Multiplicidad Cliente — Pedido:
+  A) 1..* — 1..*   B) 1 — 0..*   C) 0..* — 0..*   D) 0..1 — 1
+
+ING-20. En un diagrama de secuencia, para representar if/else con alternativas excluyentes se usa el fragmento:
+  A) alt   B) loop   C) par   D) break
+
+ING-21. La clase GeneradorReporte consulta la BD, calcula totales, genera el PDF y envía el correo. ¿Qué principio SOLID viola principalmente?
+  A) OCP   B) SRP   C) LSP   D) DIP
+
+ING-22. Notificar automáticamente a varios módulos suscritos cuando cambia el estado de un objeto corresponde al patrón:
+  A) Observer   B) Singleton   C) Factory Method   D) Decorator
+
+ING-23. Versión actual 2.4.1. Se corrige un bug compatible y luego se introduce un cambio que rompe compatibilidad (SemVer). Versiones resultantes, en orden:
+  A) 2.5.0 y 2.6.0   B) 2.4.2 y 3.0.0   C) 3.0.0 y 3.0.1   D) 2.4.2 y 2.5.0
+
+==============================================================================
+PARTE I - SECCION 5: EXPERIENCIA DE USUARIO / UX (6 reactivos)
+==============================================================================
+
+UX-01. Una app elimina la cuenta con un solo toque, sin ninguna confirmación previa. Heurística de Nielsen violada:
+  A) Visibilidad del estado del sistema   B) Prevención de errores
+  C) Consistencia y estándares            D) Ayuda y documentación
+
+UX-02. Al subir un video de 500 MB no aparece barra de progreso ni indicador alguno. Heurística violada:
+  A) Visibilidad del estado del sistema   B) Flexibilidad y eficiencia de uso
+  C) Estética y diseño minimalista        D) Reconocimiento antes que recuerdo
+
+UX-03. En una pantalla el botón se llama "Guardar" y en otra, para la misma acción, "Aceptar" con otro icono. Heurística violada:
+  A) Flexibilidad y eficiencia   B) Reconocimiento antes que recuerdo   C) Consistencia y estándares   D) Prevención de errores
+
+UX-04. Ante un fallo, el sistema muestra solo "Error 0x80004005" sin explicar qué pasó ni cómo resolverlo. Heurística violada:
+  A) Coincidencia entre el sistema y el mundo real   B) Estética y diseño minimalista
+  C) Visibilidad del estado del sistema              D) Ayudar a reconocer, diagnosticar y recuperarse de errores
+
+UX-05. Un usuario experto debe recorrer cinco menús para una acción diaria y no existen atajos. Heurística violada:
+  A) Flexibilidad y eficiencia de uso   B) Control y libertad del usuario   C) Consistencia   D) Ayuda y documentación
+
+UX-06. Un formulario exige recordar un código que se mostró dos pantallas atrás. Heurística violada:
+  A) Flexibilidad y eficiencia   B) Reconocimiento antes que recuerdo   C) Consistencia   D) Prevención de errores
+
+==============================================================================
+PARTE II - SECCION 6: REDES Y COMUNICACIONES (46 reactivos)
+==============================================================================
+
+RED-01. Host 192.168.10.70/26. ¿Dirección de broadcast de su subred?
+  A) 192.168.10.63   B) 192.168.10.127   C) 192.168.10.255   D) 192.168.10.64
+
+RED-02. Host 172.16.5.100/27. ¿Rango de hosts VÁLIDOS de su subred?
+  A) 172.16.5.97 – 172.16.5.126   B) 172.16.5.96 – 172.16.5.127
+  C) 172.16.5.100 – 172.16.5.126  D) 172.16.5.65 – 172.16.5.94
+
+RED-03. Host 10.0.0.200/28. Dirección de red y de broadcast:
+  A) 10.0.0.192 / 10.0.0.208   B) 10.0.0.200 / 10.0.0.215
+  C) 10.0.0.192 / 10.0.0.207   D) 10.0.0.196 / 10.0.0.203
+
+RED-04. Una subred debe alojar 50 hosts. ¿Prefijo más eficiente?
+  A) /25   B) /27   C) /28   D) /26
+
+RED-05. De 192.168.1.0/24 se necesitan al menos 5 subredes maximizando hosts por subred. ¿Máscara?
+  A) 255.255.255.192   B) 255.255.255.224   C) 255.255.255.240   D) 255.255.255.128
+
+RED-06. Se subnetea 172.16.0.0/16 a /20. ¿Cuántos bits se piden prestados y cuántas subredes resultan?
+  A) 4 bits, 16 subredes   B) 3 bits, 8 subredes   C) 4 bits, 8 subredes   D) 5 bits, 32 subredes
+
+RED-07. Máscara 255.255.255.248. ¿Hosts utilizables por subred?
+  A) 8   B) 6   C) 14   D) 2
+
+RED-08. Máscara 255.255.240.0. Prefijo y hosts utilizables:
+  A) /20, 4094   B) /20, 4096   C) /19, 8190   D) /21, 2046
+
+RED-09. Red 10.10.10.0/23. Rango completo y hosts utilizables:
+  A) 10.10.10.0–10.10.10.255; 254   B) 10.10.10.0–10.10.11.255; 510
+  C) 10.10.10.1–10.10.11.254; 512   D) 10.10.10.0–10.10.12.255; 1022
+
+RED-10. ¿Cuál es un host VÁLIDO en la subred 192.168.4.64/26?
+  A) 192.168.4.63   B) 192.168.4.64   C) 192.168.4.127   D) 192.168.4.100
+
+RED-11. PC1: 192.168.1.130/25 y PC2: 192.168.1.100/25. ¿Qué ocurre?
+  A) Están en la misma subred
+  B) Están en subredes distintas y necesitan un router para comunicarse
+  C) Comparten el mismo dominio de broadcast
+  D) Se comunican directo sin gateway
+
+RED-12. Un equipo hace ping a su subred, pero no llega a 8.8.8.8. La IP y la máscara son correctas. Causa más probable:
+  A) DNS mal configurado   B) Cable dañado   C) Gateway predeterminada incorrecta o ausente   D) Switch sin VLAN
+
+RED-13. De 192.168.0.0/24 se asignan con VLSM, en orden de mayor a menor: 100, 50 y 20 hosts. ¿Red de la subred de 20 hosts?
+  A) 192.168.0.128/26   B) 192.168.0.160/27   C) 192.168.0.192/26   D) 192.168.0.192/27
+
+RED-14. Mejor resumen (summarization) de 192.168.0.0/24, 192.168.1.0/24, 192.168.2.0/24 y 192.168.3.0/24:
+  A) 192.168.0.0/23   B) 192.168.0.0/21   C) 192.168.0.0/22   D) 192.168.0.0/24
+
+RED-15. ¿Cuál es una dirección privada (RFC 1918)?
+  A) 172.31.255.254   B) 172.32.0.1   C) 192.169.1.10   D) 11.0.0.1
+
+RED-16. Un equipo tiene la dirección 169.254.12.7. Indica que:
+  A) DHCP asignó la dirección   B) Tiene IP estática
+  C) No obtuvo respuesta de un servidor DHCP (APIPA)   D) Está tras NAT
+
+RED-17. Forma abreviada válida más corta de 2001:0db8:0000:0000:0000:ff00:0042:8329:
+  A) 2001:db8::ff00:42:8329   B) 2001:db8:0:0:0:ff00:42:8329
+  C) 2001:db8::ff:42:8329     D) 2001:0db8::ff00:0042:8329
+
+RED-18. El equivalente de 127.0.0.1 en IPv6 es:
+  A) ::1   B) ::0   C) fe80::1   D) ff02::1
+
+RED-19. Un switch de capa 2 toma decisiones de reenvío con base en:
+  A) Dirección IP destino   B) Puerto TCP   C) Dirección MAC destino   D) URL
+
+RED-20. Orden de encapsulamiento de datos de aplicación hasta el medio:
+  A) Datos → Segmento → Paquete → Trama → Bits
+  B) Datos → Paquete → Segmento → Trama → Bits
+  C) Datos → Trama → Paquete → Segmento → Bits
+  D) Datos → Segmento → Trama → Paquete → Bits
+
+RED-21. Compresión, cifrado y codificación de formato de datos se asocian a la capa OSI:
+  A) Aplicación   B) Sesión   C) Presentación   D) Transporte
+
+RED-22. Puerto estándar de DNS:
+  A) 53 (UDP/TCP)   B) 25 (TCP)   C) 67 (UDP)   D) 110 (TCP)
+
+RED-23. Un cliente de correo debe recibir mensajes manteniéndolos sincronizados en varios dispositivos. Protocolo y puerto por defecto:
+  A) POP3, 110   B) IMAP, 143   C) SMTP, 25   D) SNMP, 161
+
+RED-24. ¿Cuál es un par protocolo–puerto por defecto CORRECTO?
+  A) Telnet – 22   B) SSH – 23   C) MySQL – 1433   D) HTTPS – 443
+
+RED-25. Para una videollamada en tiempo real, ¿qué transporte se prefiere?
+  A) TCP, porque garantiza el orden
+  B) UDP, porque prioriza baja latencia sobre retransmisiones
+  C) TCP, porque es más rápido siempre
+  D) ICMP
+
+RED-26. Orden del saludo de tres vías de TCP:
+  A) SYN, ACK, FIN   B) ACK, SYN-ACK, SYN   C) SYN, SYN-ACK, ACK   D) SYN, ACK, SYN-ACK
+
+RED-27. Proceso DHCP, en orden:
+  A) Discover, Offer, Request, Acknowledge   B) Discover, Request, Offer, Acknowledge
+  C) Offer, Discover, Acknowledge, Request   D) Request, Discover, Offer, Acknowledge
+
+RED-28. Un host conoce la IP del destino en su LAN pero necesita su dirección MAC. Usa:
+  A) DHCP   B) DNS   C) ICMP   D) ARP
+
+RED-29. Registro DNS que indica el servidor de correo de un dominio:
+  A) A   B) CNAME   C) MX   D) NS
+
+RED-30. Equipos en VLAN 10 y VLAN 20 del mismo switch necesitan comunicarse. Se requiere:
+  A) Enrutamiento inter-VLAN (router-on-a-stick o switch capa 3)
+  B) Más cables UTP   C) Ampliar la máscara en los hosts   D) Cambiar el switch por un hub
+
+RED-31. El enlace entre dos switches que transporta varias VLAN usa:
+  A) Puerto de acceso   B) Puerto trunk con etiquetado 802.1Q   C) Puerto espejo   D) Half dúplex
+
+RED-32. Un switch de 24 puertos con 3 VLAN (sin router) tiene cuántos dominios de broadcast:
+  A) 24   B) 1   C) 27   D) 3
+
+RED-33. Una topología de malla completa (full mesh) con 6 nodos requiere cuántos enlaces:
+  A) 6   B) 12   C) 15   D) 30
+
+RED-34. En topología en estrella, si el dispositivo central falla:
+  A) Se pierde la comunicación de todos los nodos
+  B) Solo el nodo más lejano se desconecta
+  C) La red se reconfigura automáticamente sin pérdida
+  D) Solo se pierden los enlaces inalámbricos
+
+RED-35. Varios equipos con IP privadas salen a Internet con una sola IP pública, diferenciados por puerto. Es:
+  A) DHCP   B) NAT estático 1:1   C) PAT (NAT con sobrecarga)   D) STP
+
+RED-36. Tabla de rutas: 10.0.0.0/8 → R1; 10.1.0.0/16 → R2; 10.1.1.0/24 → R3. ¿Por dónde salen los paquetes a 10.1.1.50 y a 10.1.2.5?
+  A) R3 y R2   B) R1 y R1   C) R2 y R2   D) R3 y R1
+
+RED-37. Protocolo de enrutamiento de estado de enlace (usa SPF/Dijkstra):
+  A) OSPF   B) RIP   C) ARP   D) STP
+
+RED-38. Protocolo que evita bucles de capa 2 entre switches redundantes:
+  A) NAT   B) VTP   C) DHCP snooping   D) STP
+
+RED-39. traceroute descubre cada salto mediante:
+  A) ARP broadcast   B) Incrementar el TTL y recibir ICMP Time Exceeded
+  C) Consultas DNS inversas   D) SNMP
+
+RED-40. Canales de 2.4 GHz que NO se traslapan:
+  A) 1, 6, 11   B) 1, 2, 3   C) 3, 7, 11   D) 2, 6, 10
+
+RED-41. Comando que muestra conexiones activas y puertos en escucha:
+  A) nslookup   B) tracert   C) arp -a   D) netstat -an
+
+RED-42. Host 172.20.50.10/21. Dirección de red y broadcast:
+  A) 172.20.50.0 / 172.20.50.255   B) 172.20.48.0 / 172.20.51.255
+  C) 172.20.48.0 / 172.20.55.255   D) 172.20.32.0 / 172.20.63.255
+
+RED-43. Un enlace punto a punto entre routers con /30 ofrece cuántos hosts utilizables:
+  A) 6   B) 4   C) 2   D) 1
+
+RED-44. ¿Cuántas subredes /26 caben en un bloque /22?
+  A) 16   B) 8   C) 4   D) 64
+
+RED-45. Tiempo ideal para transferir 500 MB por un enlace de 100 Mbps (sin sobrecarga):
+  A) 5 s   B) 50 s   C) 4 s   D) 40 s
+
+RED-46. Política de firewall: bloquear acceso remoto sin cifrado y permitir web segura. Debe:
+  A) Bloquear 22 y permitir 23   B) Bloquear 443 y permitir 80
+  C) Bloquear 23 y permitir 443  D) Bloquear 53 y permitir 25
+
+==============================================================================
+PARTE II - SECCION 7: IA Y MACHINE LEARNING (46 reactivos)
+==============================================================================
+
+Datos para IA-01 a IA-04: matriz de confusión con TP=40, FP=10, FN=20, TN=130.
+
+IA-01. Precisión (precision):
+  A) 0.67   B) 0.80   C) 0.85   D) 0.73
+
+IA-02. Exhaustividad (recall):
+  A) 0.67   B) 0.80   C) 0.85   D) 0.50
+
+IA-03. F1-score:
+  A) 0.80   B) 0.67   C) 0.85   D) 0.73
+
+IA-04. Exactitud (accuracy):
+  A) 0.75   B) 0.85   C) 0.80   D) 0.73
+
+IA-05. Detección de fraude: solo 1% de las transacciones son fraude. Un modelo que predice "no fraude" siempre tiene 99% de exactitud. ¿Qué métricas son más informativas?
+  A) R²   B) MSE   C) Recall, precisión y F1   D) Solo exactitud
+
+IA-06. Valores reales [3, 5, 7] y predicciones [2, 5, 10]. MSE:
+  A) 3.33   B) 1.33   C) 10   D) 3
+
+IA-07. Con los mismos datos de IA-06, el MAE es:
+  A) 3.33   B) 1.33   C) 4   D) 1.0
+
+IA-08. SS_res = 20 y SS_tot = 100. R²:
+  A) 0.2   B) 5   C) 0.12   D) 0.8
+
+IA-09. Un R² NEGATIVO en el conjunto de prueba significa:
+  A) El modelo es perfecto   B) Hay un error de cálculo siempre
+  C) El modelo es peor que predecir siempre la media   D) Correlación negativa perfecta
+
+IA-10. Regresión y = 2x + 1. Para x = 4 el valor real fue 11. Predicción y residuo (real − predicho):
+  A) 9 y 2   B) 8 y 3   C) 9 y −2   D) 11 y 0
+
+IA-11. Descenso de gradiente: w = 3, gradiente = 4, learning rate = 0.1. Nuevo w:
+  A) 3.4   B) 0.4   C) 2.6   D) −1
+
+IA-12. Un learning rate demasiado alto provoca:
+  A) Convergencia lenta pero segura   B) Oscilación o divergencia
+  C) Siempre el mínimo global         D) Menor sobreajuste
+
+IA-13. Minimizar f(w) = w², w₀ = 4, lr = 0.25, gradiente = 2w. Valor de w tras 2 iteraciones:
+  A) 2   B) 0.5   C) 0   D) 1
+
+IA-14. Exactitud de entrenamiento 99% y de validación 70%. Diagnóstico y acción:
+  A) Subajuste; agregar capas
+  B) Sesgo alto; reducir regularización
+  C) Sobreajuste; regularización, más datos o early stopping
+  D) Datos balanceados; ninguna acción
+
+IA-15. Un árbol de decisión sin límite de profundidad suele tener:
+  A) Alta varianza y bajo sesgo   B) Alto sesgo y baja varianza
+  C) Bajo sesgo y baja varianza   D) Alto sesgo y alta varianza
+
+IA-16. Random Forest:
+  A) Entrena árboles secuencialmente corrigiendo errores
+  B) Combina árboles entrenados con bootstrap y subconjuntos aleatorios de variables (bagging)
+  C) Es un único árbol podado
+  D) Usa kernels para separar clases
+
+IA-17. Un nodo tiene 8 muestras de la clase positiva y 2 de la negativa. Índice de Gini:
+  A) 0.20   B) 0.50   C) 0.72   D) 0.32
+
+IA-18. ¿Qué nodo tiene la MAYOR entropía? (positivos, negativos)
+  A) (5, 5)   B) (9, 1)   C) (10, 0)   D) (7, 3)
+
+IA-19. Datos con forma de círculos concéntricos, no separables linealmente. Mejor opción:
+  A) SVM lineal con C bajo   B) K-Means   C) Regresión lineal   D) SVM con kernel RBF
+
+IA-20. En SVM, un valor de C muy alto:
+  A) Produce un margen más amplio y tolera más errores
+  B) No afecta el margen
+  C) Produce un margen más estrecho, penaliza errores y favorece sobreajuste
+  D) Elimina los vectores de soporte
+
+IA-21. KNN con variables edad (0–100) y salario (0–200,000) sin normalizar. Problema:
+  A) Ninguno   B) El salario domina el cálculo de distancia   C) La edad domina   D) Sobreajuste imposible
+
+IA-22. K-Means con k=2 sobre [1, 2, 3, 10, 11, 12] y centroides iniciales 1 y 12. Nuevos centroides tras la primera iteración:
+  A) 2 y 11   B) 1 y 12   C) 3 y 10   D) 6 y 6
+
+IA-23. Datos con mucho ruido y clusters de forma irregular. Algoritmo más adecuado:
+  A) K-Means, porque k es fijo   B) Regresión lineal   C) DBSCAN   D) PCA
+
+IA-24. En DBSCAN (minPts=4), un punto tiene solo 2 vecinos dentro de eps, pero está dentro del eps de un punto núcleo. Es:
+  A) Punto núcleo   B) Ruido   C) Punto de borde   D) Centroide
+
+IA-25. El método del codo (elbow) se usa en K-Means para:
+  A) Elegir k   B) Elegir el learning rate   C) Elegir el kernel   D) Reducir dimensiones
+
+IA-26. Un punto tiene distancia media intra-cluster a=2 y a su cluster vecino más cercano b=6. Coeficiente de Silhouette:
+  A) −0.67   B) 0.33   C) 3   D) 0.67
+
+IA-27. Un Silhouette cercano a −1 para un punto indica:
+  A) Probablemente está asignado al cluster equivocado
+  B) Clustering excelente
+  C) Está justo en la frontera
+  D) El cluster tiene un solo punto
+
+IA-28. Asociación correcta tarea–tipo de problema:
+  A) Segmentar clientes sin etiquetas: regresión; predecir precio: clustering
+  B) Detectar spam: clustering; precio de casa: clasificación
+  C) Segmentar clientes sin etiquetas: clustering; precio de casa: regresión; spam: clasificación
+  D) Todas son aprendizaje no supervisado
+
+IA-29. Min-max de x=30 con rango [10, 50] y z-score de x=70 con media 50 y desviación 10:
+  A) 0.5 y 20   B) 0.4 y 2   C) 0.5 y 2   D) 0.6 y 0.2
+
+IA-30. Validación cruzada de 5 folds con 1000 muestras. Tamaño de entrenamiento y validación en cada iteración:
+  A) 800 y 200   B) 200 y 800   C) 500 y 500   D) 900 y 100
+
+IA-31. Escalar (normalizar) todo el dataset antes de dividir en train/test provoca:
+  A) Subajuste   B) Es la práctica recomendada   C) Sesgo de selección   D) Fuga de datos (data leakage)
+
+IA-32. sigmoid(0) =
+  A) 0.5   B) 0   C) 1   D) −1
+
+IA-33. Perceptrón: pesos [0.5, −1], sesgo 0.2, entrada [2, 1], activación escalón (≥0 → 1). Salida:
+  A) 0   B) 0.2   C) −0.8   D) 1
+
+IA-34. Dataset de 1000 muestras, batch size 100, 5 épocas. Actualizaciones de pesos totales:
+  A) 10   B) 500   C) 50   D) 5
+
+IA-35. Respecto a regularización:
+  A) L2 lleva coeficientes exactamente a cero; L1 no
+  B) L1 puede llevar coeficientes exactamente a cero (selección de variables); L2 los encoge
+  C) Ambas son idénticas
+  D) L1 aumenta el sobreajuste
+
+IA-36. PCA sirve para:
+  A) Clustering jerárquico   B) Regresión no lineal   C) Clasificación supervisada   D) Reducción de dimensionalidad conservando varianza
+
+IA-37. Clases muy desbalanceadas. Una técnica adecuada:
+  A) Eliminar la variable objetivo   B) Oversampling (SMOTE) o pesos de clase
+  C) Aumentar el learning rate       D) Quitar la validación
+
+IA-38. En un tamizaje de cáncer, donde un falso negativo es muy costoso, se prioriza:
+  A) Precisión   B) Especificidad   C) Recall (sensibilidad)   D) MSE
+
+IA-39. Un AUC-ROC de 0.5 indica:
+  A) Clasificador perfecto   B) Desempeño equivalente al azar   C) Siempre predice 1   D) Error de cálculo
+
+IA-40. Boosting (AdaBoost, XGBoost) se caracteriza porque:
+  A) Entrena modelos independientes en paralelo y promedia
+  B) Reduce dimensiones
+  C) Agrupa sin etiquetas
+  D) Entrena modelos secuenciales donde cada uno corrige errores del anterior
+
+IA-41. Respecto a R² y R² ajustado al agregar variables irrelevantes:
+  A) R² no disminuye en entrenamiento; el R² ajustado penaliza variables que no aportan
+  B) R² siempre disminuye
+  C) El R² ajustado siempre aumenta
+  D) Ambos son idénticos
+
+IA-42. Matriz con TP=90, FN=10, FP=30, TN=70. Especificidad:
+  A) 0.75   B) 0.90   C) 0.82   D) 0.70
+
+IA-43. ¿Cuál es un HIPERPARÁMETRO?
+  A) Learning rate   B) Coeficientes β de regresión   C) Pesos de una red   D) Umbrales aprendidos de un árbol
+
+IA-44. Métrica propia de problemas de REGRESIÓN:
+  A) F1   B) MSE   C) Accuracy   D) AUC
+
+IA-45. Limitación de K-Means:
+  A) No requiere definir k   B) Detecta ruido automáticamente
+  C) Funciona igual con formas arbitrarias   D) Es sensible a outliers y asume clusters aproximadamente esféricos
+
+IA-46. El descenso de gradiente estocástico (SGD), frente al de lote completo:
+  A) Usa todo el dataset por actualización
+  B) Actualiza con una muestra (o mini-lote): más ruidoso, pero más rápido por actualización
+  C) Nunca converge
+  D) Solo sirve para clustering
+
+==============================================================================
+PARTE II - SECCION 8: CIBERSEGURIDAD (17 reactivos)
+==============================================================================
+
+CIB-01. Se necesita administración remota de un servidor con cifrado de extremo a extremo. Protocolo y puerto:
+  A) SSH, 22   B) Telnet, 23   C) FTP, 21   D) HTTP, 80
+
+CIB-02. Transferencia de archivos con cifrado sobre SSH:
+  A) FTP   B) TFTP   C) SFTP   D) Telnet
+
+CIB-03. ¿Cuál es la opción de seguridad Wi-Fi MÁS robusta?
+  A) Red abierta   B) WEP de 128 bits   C) WEP con filtrado MAC   D) WPA2 con AES (CCMP)
+
+CIB-04. Un atacante prueba miles de contraseñas contra el login. Mitigación más adecuada:
+  A) Bloqueo temporal tras intentos fallidos, limitación de tasa y MFA
+  B) Aumentar el ancho de banda
+  C) Deshabilitar el firewall
+  D) Cambiar a HTTP
+
+CIB-05. Llega un correo "del banco" con un enlace falso que solicita credenciales. Tipo de ataque y mejor mitigación:
+  A) Fuerza bruta; bloqueo de cuentas
+  B) Phishing; capacitación, filtrado de correo (SPF/DKIM/DMARC) y MFA
+  C) DoS; CDN
+  D) MITM; VPN
+
+CIB-06. Miles de dispositivos infectados saturan un servidor web con peticiones. Es:
+  A) Phishing   B) Inyección SQL   C) DDoS   D) Escalamiento de privilegios
+
+CIB-07. Entrada en un login: ' OR '1'='1. Mitigación principal:
+  A) Consultas parametrizadas (prepared statements)   B) Cifrar el disco
+  C) Contraseñas más largas   D) Cambiar el puerto de la BD
+
+CIB-08. Un comentario con <script> se almacena y se ejecuta en el navegador de otros usuarios. Es XSS. Mitigación:
+  A) Más RAM en el servidor   B) Codificación/sanitización de salida y Content-Security-Policy
+  C) Usar UDP   D) Deshabilitar DNS
+
+CIB-09. En un Wi-Fi público un atacante intercepta el tráfico entre el usuario y un sitio. Mitigación:
+  A) Usar HTTP   B) Compartir la contraseña   C) Desactivar la validación de certificados   D) HTTPS/VPN con validación de certificados
+
+CIB-10. Forma correcta de almacenar contraseñas:
+  A) Texto plano
+  B) Cifrado reversible con la clave en el código
+  C) Hash con sal y algoritmo lento (bcrypt/Argon2)
+  D) MD5 sin sal
+
+CIB-11. En una firma digital, el emisor:
+  A) Firma con la clave pública y verifican con la privada
+  B) Firma con su clave privada y el receptor verifica con la pública del emisor
+  C) Usa la misma clave simétrica ambos
+  D) Solo calcula un hash sin claves
+
+CIB-12. Un ransomware cifra archivos y los vuelve inaccesibles. El pilar de la tríada CIA más directamente afectado:
+  A) Disponibilidad   B) Confidencialidad   C) Integridad   D) No repudio
+
+CIB-13. ¿Cuál es un verdadero MFA?
+  A) Contraseña + PIN   B) Contraseña + pregunta secreta
+  C) Contraseña + código TOTP del teléfono   D) Dos contraseñas distintas
+
+CIB-14. Dispositivo en línea que detecta y BLOQUEA automáticamente tráfico malicioso:
+  A) IDS pasivo   B) Proxy DNS   C) Hub   D) IPS
+
+CIB-15. Un practicante solo debe leer reportes. Según el principio de mínimo privilegio:
+  A) Rol administrador   B) Rol de solo lectura en los reportes
+  C) Compartirle la cuenta del gerente   D) Acceso root
+
+CIB-16. Mejor defensa para recuperarse de ransomware sin pagar:
+  A) Respaldos 3-2-1 con una copia offline/inmutable   B) Deshabilitar el antivirus
+  C) Compartir contraseñas   D) Pagar siempre el rescate
+
+CIB-17. Empleados remotos acceden a recursos internos desde redes no confiables. Solución:
+  A) FTP   B) Telnet   C) VPN con cifrado (IPsec/TLS)   D) HTTP sin cifrar
+
+==============================================================================
+PARTE II - SECCION 9: BI Y GOBIERNO DE DATOS (17 reactivos)
+==============================================================================
+
+BI-01. Una empresa quiere guardar logs, imágenes y JSON sin esquema fijo para análisis y ML futuros. Mejor arquitectura:
+  A) Data Mart   B) Data Warehouse tradicional   C) Data Lake   D) Base OLTP
+
+BI-02. Un subconjunto del almacén enfocado solo en el área de Ventas es un:
+  A) Data Mart   B) Data Lake   C) Cubo SQL   D) Data Lineage
+
+BI-03. Homologar formatos de fecha y eliminar duplicados corresponde a la fase ETL de:
+  A) Extracción   B) Transformación   C) Carga   D) Visualización
+
+BI-04. ¿Qué distingue a ELT de ETL?
+  A) ETL transforma después de cargar en el destino
+  B) ELT transforma antes de extraer
+  C) Son idénticos
+  D) ELT carga los datos crudos al destino y transforma ahí
+
+BI-05. En un modelo estrella, ¿cuál es la tabla de HECHOS?
+  A) Dim_Producto   B) Dim_Tiempo   C) Ventas(id_producto, id_tiempo, monto, cantidad)   D) Dim_Cliente
+
+BI-06. El esquema copo de nieve se diferencia del estrella porque:
+  A) Normaliza las dimensiones en subtablas
+  B) No tiene tabla de hechos
+  C) Usa solo tablas de hechos
+  D) Es un modelo NoSQL
+
+BI-07. "Una fila por producto, por tienda y por día" define:
+  A) La cardinalidad   B) La granularidad de la tabla de hechos   C) Una dimensión   D) Una jerarquía
+
+BI-08. Pasar de ventas por mes a ventas por trimestre es una operación OLAP de:
+  A) Drill-down   B) Slice   C) Roll-up   D) Pivot
+
+BI-09. Fijar Región = "Norte" para ver solo ese corte del cubo es:
+  A) Slice   B) Dice   C) Roll-up   D) Drill-down
+
+BI-10. Un cubo con 4 productos × 3 regiones × 12 meses tiene cuántas celdas:
+  A) 19   B) 48   C) 36   D) 144
+
+BI-11. Miles de transacciones cortas de inserción/actualización con alta concurrencia son carga típica de:
+  A) OLAP   B) OLTP   C) Data Lake   D) Minería de datos
+
+BI-12. Un cliente cambia de ciudad y se debe conservar el historial. Dimensión de cambio lento:
+  A) Tipo 0   B) Tipo 1 (sobrescribe)   C) Tipo 2 (nueva fila con vigencia)   D) Tipo 3 (solo valor previo)
+
+BI-13. Quien responde por la calidad y definición de los datos de un dominio es el:
+  A) Data steward   B) DBA   C) Arquitecto de red   D) Desarrollador front-end
+
+BI-14. Rastrear el origen y las transformaciones de un KPI hasta sus fuentes se llama:
+  A) Particionamiento   B) Catálogo   C) Backup   D) Data lineage
+
+BI-15. Clientes duplicados en el CRM afectan principalmente la dimensión de calidad de:
+  A) Oportunidad   B) Completitud   C) Unicidad   D) Validez
+
+BI-16. Para mostrar la tendencia de ventas a lo largo del tiempo conviene un gráfico de:
+  A) Pastel   B) Líneas   C) Dispersión   D) Mapa de calor
+
+BI-17. Consolidar clientes de CRM, ERP y e-commerce en un único registro confiable ("golden record") es:
+  A) OLAP   B) Sharding   C) Data Lake   D) Gestión de Datos Maestros (MDM)
+
+==============================================================================
+PARTE II - SECCION 10: SISTEMAS DE INFORMACION GERENCIAL (6 reactivos)
+==============================================================================
+
+SIG-01. Un hospital quiere reducir reingresos y optimizar la ocupación de camas. Lo más adecuado:
+  A) Un sistema de nómina   B) Analítica predictiva y tableros clínicos   C) Un sistema de facturación   D) Un editor de texto
+
+SIG-02. Retail: demanda diaria 20 unidades, tiempo de reabasto 5 días, stock de seguridad 30. Punto de reorden:
+  A) 130   B) 100   C) 150   D) 30
+
+SIG-03. En manufactura, el mantenimiento PREDICTIVO consiste en:
+  A) Reparar solo al fallar   B) Mantener cada mes sin importar el estado
+  C) Usar sensores y modelos para estimar fallas antes de que ocurran   D) Reemplazar todo cada año
+
+SIG-04. Sistema para decisiones estratégicas de la alta dirección:
+  A) TPS   B) Automatización de oficina   C) MIS   D) ESS/EIS
+
+SIG-05. El registro de ventas en caja en tiempo real corresponde a un:
+  A) TPS (procesamiento de transacciones)   B) DSS   C) ESS   D) MIS estratégico
+
+SIG-06. En el análisis ABC de inventarios, los artículos clase A son:
+  A) Muchos de bajo valor   B) Pocos que concentran gran parte del valor   C) Obsoletos   D) Sin movimiento
+
+==============================================================================
+PARTE II - SECCION 11: COMPUTO EN LA NUBE (17 reactivos)
+==============================================================================
+
+CL-01. Para guardar imágenes de usuarios y archivos estáticos de gran volumen en AWS:
+  A) EC2   B) S3   C) RDS   D) Lambda
+
+CL-02. Procesar una imagen cada vez que se sube a S3, con ejecuciones breves y esporádicas, pagando solo por uso:
+  A) Lambda   B) EC2 encendida 24/7   C) RDS   D) Direct Connect
+
+CL-03. Una tienda en línea tiene picos impredecibles de tráfico. Arquitectura recomendada:
+  A) Agregar instancias manualmente cada vez
+  B) Un servidor único más grande y fijo
+  C) Auto Scaling Group con Elastic Load Balancer
+  D) Apagar el servidor en horas pico
+
+CL-04. Agregar más instancias detrás de un balanceador es:
+  A) Escalado vertical   B) Escalado diagonal   C) Failover   D) Escalado horizontal
+
+CL-05. Almacén key-value NoSQL gestionado, con latencia de milisegundos a gran escala:
+  A) RDS   B) Redshift   C) DynamoDB   D) Glacier
+
+CL-06. Clasificación de EC2, Elastic Beanstalk y Google Workspace:
+  A) SaaS, PaaS, IaaS   B) IaaS, PaaS, SaaS   C) PaaS, IaaS, SaaS   D) IaaS, SaaS, PaaS
+
+CL-07. En el modelo de responsabilidad compartida, el CLIENTE es responsable de:
+  A) Configurar IAM, cifrado y permisos de sus datos
+  B) La seguridad física del datacenter
+  C) El hardware de red del proveedor
+  D) El hipervisor
+
+CL-08. Para sobrevivir a la caída de un datacenter completo dentro de una región:
+  A) Una sola AZ con instancia grande   B) Respaldo semanal
+  C) Desplegar en múltiples zonas de disponibilidad con balanceador   D) Más RAM
+
+CL-09. Datos de auditoría que se consultan una vez al año y deben conservarse al menor costo:
+  A) EBS   B) Instance store   C) S3 Standard   D) S3 Glacier Deep Archive
+
+CL-10. Usuarios en varios continentes consumen contenido estático. Para reducir la latencia:
+  A) CloudFront (CDN) con S3 como origen   B) Más EC2 en una sola región
+  C) Aumentar IOPS del disco   D) Direct Connect
+
+CL-11. Una aplicación en EC2 debe leer de S3 de forma segura:
+  A) Guardar access keys en el código   B) Usar el usuario root
+  C) Asignar un rol IAM a la instancia   D) Hacer público el bucket
+
+CL-12. Un proceso por lotes dura 2 horas. Lambda tiene un límite de 15 minutos. Alternativa adecuada:
+  A) Lambda   B) CloudFront   C) S3   D) AWS Batch / EC2 / contenedores
+
+CL-13. Carga constante 24/7 durante 3 años. Opción más económica:
+  A) Reserved Instances / Savings Plans   B) Spot   C) On-demand   D) Free tier
+
+CL-14. Procesamiento por lotes tolerante a interrupciones y con presupuesto mínimo:
+  A) Reserved   B) Spot   C) Dedicated Host   D) On-demand
+
+CL-15. Desacoplar productores y consumidores y absorber picos de mensajes:
+  A) Route 53   B) IAM   C) SQS   D) CloudWatch
+
+CL-16. Una base de datos no debe ser accesible desde Internet. Diseño en VPC:
+  A) Subred pública con IP pública
+  B) Security group abierto a 0.0.0.0/0
+  C) Misma subred que el servidor web con IP pública
+  D) Subred privada con security group que solo permite al servidor de aplicación
+
+CL-17. Ajustar recursos automáticamente a la demanda, creciendo y decreciendo, es:
+  A) Latencia   B) Elasticidad   C) Durabilidad   D) Redundancia
+
+==============================================================================
+PARTE II - SECCION 12: CALIDAD DE SOFTWARE / QA (17 reactivos)
+==============================================================================
+
+QA-01. Según ISO/IEC 25010, el tiempo de respuesta bajo carga pertenece a:
+  A) Portabilidad   B) Usabilidad   C) Eficiencia de desempeño   D) Mantenibilidad
+
+QA-02. Migrar una aplicación de Windows a Linux con cambios mínimos evalúa:
+  A) Portabilidad   B) Fiabilidad   C) Seguridad   D) Usabilidad
+
+QA-03. La norma de la familia ISO 25000 (SQuaRE) que define el modelo de calidad del PRODUCTO es:
+  A) ISO 25012   B) ISO 25010   C) ISO 25040   D) ISO 27001
+
+QA-04. Un campo de edad acepta 18–65. Valores de análisis de límites:
+  A) 18, 40, 65   B) 19, 64   C) 0, 100   D) 17, 18, 65, 66
+
+QA-05. En partición de equivalencia, el campo de 18–65 genera cuántas clases:
+  A) 2   B) 3   C) 4   D) 5
+
+QA-06. Complejidad ciclomática de un grafo con E=9 aristas, N=8 nodos y P=1:
+  A) 2   B) 4   C) 3   D) 5
+
+QA-07. Una función con dos if independientes. Mínimo de pruebas para 100% de cobertura de ramas:
+  A) 2   B) 1   C) 3   D) 4
+
+QA-08. Probar una sola función aislada, con mocks y sin BD real:
+  A) E2E   B) UAT   C) Estrés   D) Unitaria
+
+QA-09. Verificar que el módulo de pedidos y el de inventario funcionan correctamente juntos:
+  A) Unitaria   B) Integración   C) Humo   D) Carga
+
+QA-10. Probar el flujo completo login → carrito → pago en un entorno similar a producción:
+  A) Unitaria   B) Caja blanca   C) E2E   D) Cobertura
+
+QA-11. Validación por usuarios o cliente antes de liberar a producción:
+  A) UAT   B) Unitaria   C) Análisis estático   D) Mutación
+
+QA-12. Tras corregir un bug, se vuelven a ejecutar pruebas previas para asegurar que nada se rompió:
+  A) Humo   B) Regresión   C) Exploratoria   D) Carga
+
+QA-13. Validación rápida y superficial de que una build es estable para probarse a fondo:
+  A) Estrés   B) Regresión   C) UAT   D) Humo (smoke)
+
+QA-14. La matriz de trazabilidad de requisitos:
+  A) Mide la velocidad del equipo   B) Lista únicamente defectos
+  C) Vincula requisitos con casos de prueba y resultados   D) Calcula complejidad ciclomática
+
+QA-15. Un error ortográfico en el logotipo de la página principal el día del lanzamiento. Clasificación:
+  A) Severidad alta, prioridad baja   B) Severidad baja, prioridad alta
+  C) Ambas altas                      D) Ambas bajas
+
+QA-16. Simular la carga esperada de 10,000 usuarios concurrentes para medir tiempos de respuesta:
+  A) Estrés (más allá del límite)   B) Resistencia (24 h)   C) Pico súbito   D) Carga
+
+QA-17. Herramienta para automatizar pruebas de interfaz web en navegadores:
+  A) Selenium   B) JMeter   C) Git   D) JUnit
+
+==============================================================================
+PARTE II - SECCION 13: NEGOCIOS, S.O. Y TECNOLOGIA (17 reactivos)
+==============================================================================
+
+NEG-01. ¿Qué hace ls -la?
+  A) Lista archivos, incluidos los ocultos, con detalle
+  B) Lista solo directorios
+  C) Elimina archivos
+  D) Copia archivos
+
+NEG-02. Copiar la carpeta proyecto (con subcarpetas) a respaldo:
+  A) cp proyecto respaldo   B) cp -r proyecto respaldo   C) mv -r proyecto respaldo   D) ls -r proyecto
+
+NEG-03. Crear la ruta anidada a/b/c aunque no existan a ni a/b:
+  A) mkdir a/b/c   B) touch -p a/b/c   C) mkdir -p a/b/c   D) cp -p a/b/c
+
+NEG-04. chmod 755 archivo otorga:
+  A) rwxr-xr-x   B) rw-r--r--   C) rwx------   D) rwxrwxrwx
+
+NEG-05. chmod 640 archivo otorga:
+  A) rw-r--r--   B) rw-r-----   C) rwxr-----   D) r--r-----
+
+NEG-06. ¿Qué hace grep -i "error" log.txt | wc -l?
+  A) Cuenta archivos   B) Lista palabras   C) Elimina líneas
+  D) Cuenta las líneas que contienen "error" sin distinguir mayúsculas
+
+NEG-07. Se ejecuta:
+    echo "a" > f; echo "b" >> f; echo "c" > f; cat f
+Salida:
+  A) c   B) a, b y c   C) b y c   D) a y b
+
+NEG-08. Tras mkdir t; cd t; touch a b c; ls | wc -l, el resultado es:
+  A) 0   B) 1   C) 3   D) 4
+
+NEG-09. Estás en /home/user. Ejecutas cd docs; cd ../..; pwd. Resultado:
+  A) /home/user   B) /home   C) /   D) /home/docs
+
+NEG-10. Terminar inmediatamente el proceso con PID 1234:
+  A) ps -9 1234   B) rm 1234   C) stop 1234   D) kill -9 1234
+
+NEG-11. Un usuario camina por una habitación y el entorno virtual debe reflejar su desplazamiento. Se requiere:
+  A) 3DOF   B) 6DOF   C) 2DOF   D) 1DOF
+
+NEG-12. Un visor para smartphone solo detecta el giro de cabeza (guiñada, cabeceo, alabeo). Es:
+  A) 6DOF   B) 9DOF   C) 3DOF   D) 0DOF
+
+NEG-13. Webinars, comparativas y casos de estudio para prospectos que ya conocen su problema corresponden al embudo:
+  A) TOFU   B) BOFU   C) Retención   D) MOFU
+
+NEG-14. Un blog recibe una comisión por cada venta generada mediante su enlace. Es:
+  A) Marketing de afiliación   B) SEM   C) Email marketing   D) Retargeting
+
+NEG-15. Posicionarse orgánicamente con contenido optimizado y backlinks es:
+  A) SEM   B) SEO   C) PPC   D) Display
+
+NEG-16. 50 clics sobre 2,000 impresiones. CTR:
+  A) 0.25%   B) 25%   C) 2.5%   D) 4%
+
+NEG-17. Gasto de marketing de $5,000 y 100 clientes nuevos. CAC:
+  A) $500   B) $5   C) $0.02   D) $50
+
+##############################################################################
+ CLAVES DE RESPUESTAS
+##############################################################################
+
+CLAVE - PROGRAMACION Y ALGORITMOS
+01-B (1+3+5=9) | 02-D (10→5→2→1→0: 4 iteraciones) | 03-C (el 1er if hace corto circuito; el elif evalúa a>3 True y no llega a a/b) | 04-A (Fibonacci: 13)
+05-B (9+2+7+4=22) | 06-D (polimorfismo dinámico) | 07-A (static se resuelve por tipo de referencia) | 08-C (MRO: D,B,C,A)
+09-C (f virtual→B; g no virtual→A) | 10-A (3 + 3.5) | 11-D (lista compartida entre llamadas) | 12-A (a[1:5:2]=[2,4]; a[::-2]=[6,4,2])
+13-B (1+2+3+4) | 14-B (log2(10^6)≈19.9→20) | 15-D (j se duplica: log n; i: n) | 16-A (queda [1])
+17-C (A,B,C→B,C→B,C,D→C,D) | 18-D | 19-A | 20-C (merge sort es estable y O(n log n) siempre)
+21-D (String es inmutable) | 22-B (== compara referencias) | 23-C | 24-A (2+3)
+25-B (5 + 7) | 26-D (el else del for corre si no hubo break) | 27-C (2^n - 1) | 28-A (2^5)
+29-B (32+8+4+1) | 30-B (finally se ejecuta antes de que el método retorne) | 31-D (0+1+4) | 32-B
+33-C | 34-D | 35-A | 36-B
+37-C | 38-D | 39-C | 40-A (A→C→B→D = 1+2+1)
+41-B | 42-C (n es variable de clase) | 43-D (long se ensancha a double en la fase sin boxing) | 44-B
+45-D (floor division y módulo con signo del divisor) | 46-A ((10+5)*2) | 47-B (*(p+2)=40, p[-1]=10) | 48-C
+49-A (constructores de arriba hacia abajo) | 50-C | 51-D (MCD de 48 y 18) | 52-B
+
+CLAVE - BASES DE DATOS
+SQL:
+01-B (Sofía no tiene depto) | 02-B (LEFT conserva a Sofía con NULL) | 03-D (Legal no tiene empleados) | 04-A (Ventas 4500, TI 4500, RH 3500)
+05-C (solo RH tiene 1; Legal no aparece en INNER JOIN) | 06-B (NULL<>1 es UNKNOWN: Sofía se excluye; 6000+3000+3500) | 07-A | 08-B (prom 4333.33: Ana, Marta, Sofía)
+09-B (orden: Marta, Ana, Sofía, Luis, Juan, Pedro) | 10-A (UNION elimina duplicados) | 11-C | 12-C (NOT IN con NULL en la subconsulta nunca es TRUE)
+13-C (NOT EXISTS sí maneja bien los NULL) | 14-C (Luis y Sofía) | 15-B (5 coincidencias + Sofía + Legal) | 16-C (dependencia transitiva)
+17-A (Ana y Luis) | 18-B | 19-C (prefijo fijo sí usa índice) | 20-B (el grupo NULL forma su propia partición: Ana, Marta, Juan, Sofía)
+21-D | 22-A | 23-B (solo Marta) | 24-D (condición en ON conserva todos los departamentos; en WHERE se perderían RH y Legal)
+25-A | 26-A (Ana y Marta; Sofía queda fuera porque depto_id NULL no iguala nada)
+MONGODB:
+01-A (ids 1,2,4) | 02-C (1,3,5) | 03-B (B=250+50=300) | 04-C (2+1+1+0+1; el arreglo vacío se descarta)
+05-A (1+3) | 06-B | 07-C (150*1.16) | 08-B (630/5)
+09-B | 10-A | 11-B (docs 1 y 5) | 12-B (sin $elemMatch, 'y' y qty>=2 pueden estar en elementos distintos del doc 1)
+13-C | 14-A | 15-C | 16-D
+17-A (docs 3 y 5) | 18-B (64010 y 64020) | 19-B | 20-A
+
+CLAVE - DESARROLLO WEB Y MOVIL
+01-C (2em=32px; 1.5em de 32=48) | 02-B (2rem=20px; 1.5em=30px) | 03-C (200+40+10) | 04-A (200-40-10)
+05-D (colapso de márgenes: el mayor) | 06-C (200px libres entre 2 huecos) | 07-A (300px libres: A+100, B+200) | 08-A (column: main=vertical, cross=horizontal)
+09-B (#nav a=1,0,1) | 10-C (!important supera al inline normal) | 11-A | 12-D
+13-D (3+3+1) | 14-B (solo C es li descendiente de li.x) | 15-D | 16-A
+17-D (var sin scope de bloque) | 18-C (microtareas antes que macrotareas) | 19-A (401=no autenticado; 403=sin permiso) | 20-D
+21-A | 22-B | 23-D | 24-D
+25-D (stale closure + batching) | 26-C | 27-A | 28-B
+29-A | 30-B | 31-C | 32-B (padding antes de background)
+33-D | 34-D
+
+CLAVE - INGENIERIA DE SOFTWARE
+01-B | 02-C (--soft conserva staging; --mixed deja sin stage; --hard descarta) | 03-A | 04-B
+05-B | 06-D (revert crea un commit inverso) | 07-B | 08-C
+09-B | 10-A (hay que dejar de rastrearlo) | 11-B | 12-D
+13-B (promedio 25; 100/25) | 14-C | 15-D | 16-C
+17-A | 18-C | 19-B | 20-A
+21-B | 22-A | 23-B
+
+CLAVE - UX
+01-B | 02-A | 03-C | 04-D | 05-A | 06-B
+
+CLAVE - REDES
+01-B (bloque 64–127) | 02-A (bloque 96–127; hosts .97–.126) | 03-C (bloque 192–207) | 04-D (/26 = 62 hosts)
+05-B (/27: 3 bits → 8 subredes) | 06-A | 07-B (2^3-2) | 08-A (2^12-2)
+09-B (2^9-2=510) | 10-D (.63 y .127 broadcast; .64 red) | 11-B (/25: bloques 0–127 y 128–255) | 12-C
+13-D (100→/25: .0–.127; 50→/26: .128–.191; 20→/27: .192) | 14-C | 15-A (172.16–172.31) | 16-C
+17-A | 18-A | 19-C | 20-A
+21-C | 22-A | 23-B | 24-D
+25-B | 26-C | 27-A | 28-D
+29-C | 30-A | 31-B | 32-D
+33-C (n(n-1)/2) | 34-A | 35-C | 36-A (prefijo más largo)
+37-A | 38-D | 39-B | 40-A
+41-D | 42-C (/21: bloques de 8 en el 3er octeto: 48–55) | 43-C | 44-A (2^(26-22))
+45-D (500×8=4000 Mb / 100) | 46-C
+
+CLAVE - IA Y MACHINE LEARNING
+01-B (40/50) | 02-A (40/60) | 03-D (2TP/(2TP+FP+FN)=80/110) | 04-B (170/200)
+05-C | 06-A ((1+0+9)/3) | 07-B ((1+0+3)/3) | 08-D (1−20/100)
+09-C | 10-A (pred 9; residuo +2) | 11-C (3−0.4) | 12-B
+13-D (4→2→1) | 14-C | 15-A | 16-B
+17-D (1−(0.64+0.04)) | 18-A (50/50) | 19-D | 20-C
+21-B | 22-A (clusters {1,2,3} y {10,11,12}) | 23-C | 24-C
+25-A | 26-D ((6−2)/6) | 27-A | 28-C
+29-C | 30-A | 31-D | 32-A
+33-D (z=1−1+0.2=0.2 ≥ 0) | 34-C (10 lotes × 5 épocas) | 35-B | 36-D
+37-B | 38-C | 39-B | 40-D
+41-A | 42-D (70/100) | 43-A | 44-B
+45-D | 46-B
+
+CLAVE - CIBERSEGURIDAD
+01-A | 02-C | 03-D | 04-A | 05-B | 06-C | 07-A | 08-B | 09-D | 10-C | 11-B | 12-A | 13-C | 14-D | 15-B | 16-A | 17-C
+
+CLAVE - BI Y GOBIERNO DE DATOS
+01-C | 02-A | 03-B | 04-D | 05-C | 06-A | 07-B | 08-C | 09-A | 10-D (4×3×12) | 11-B | 12-C | 13-A | 14-D | 15-C | 16-B | 17-D
+
+CLAVE - SIG
+01-B | 02-A (20×5+30) | 03-C | 04-D | 05-A | 06-B
+
+CLAVE - CLOUD
+01-B | 02-A | 03-C | 04-D | 05-C | 06-B | 07-A | 08-C | 09-D | 10-A | 11-C | 12-D | 13-A | 14-B | 15-C | 16-D | 17-B
+
+CLAVE - QA
+01-C | 02-A | 03-B | 04-D | 05-B (<18, 18–65, >65) | 06-C (E−N+2P=3) | 07-A | 08-D | 09-B | 10-C | 11-A | 12-B | 13-D | 14-C | 15-B | 16-D | 17-A
+
+CLAVE - NEGOCIOS, S.O. Y TECH
+01-A | 02-B | 03-C | 04-A | 05-B | 06-D | 07-A (el último > sobrescribe) | 08-C | 09-B (/home/user/docs → ../.. = /home) | 10-D | 11-B | 12-C | 13-D | 14-A | 15-B | 16-C (50/2000) | 17-D

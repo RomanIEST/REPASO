@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repaso Examen de Egreso · Ing. en TI</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-logo">🎓</span>
+      <div>
+        <h1>Repaso · Examen de Egreso</h1>
+        <small>Ingeniería en Tecnologías de la Información · <span id="bankCount">…</span> reactivos</small>
+      </div>
+    </div>
+    <nav id="mainNav" class="main-nav">
+      <a href="#/home" data-route="home">Inicio</a>
+      <a href="#/study" data-route="study">Estudio</a>
+      <a href="#/quiz" data-route="quiz">Prueba por tema</a>
+      <a href="#/exam" data-route="exam">Simulacro</a>
+      <a href="#/flash" data-route="flash">Flashcards</a>
+      <a href="#/review" data-route="review">Repaso de fallos <span id="wrongBadge" class="badge hidden"></span></a>
+      <a href="#/search" data-route="search">Buscar</a>
+    </nav>
+  </header>
+
+  <main id="app" class="container">
+    <div class="loading">Cargando…</div>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "repaso-examen-egreso",
+  "version": "1.0.0",
+  "description": "App web de estudio para el Examen General de Egreso (Ing. en TI) con el banco de 344 reactivos",
+  "license": "MIT",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": []
+}
